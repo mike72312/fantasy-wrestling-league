@@ -1,0 +1,52 @@
+{
+  "standings": [
+    {
+      "manager": "Buddy",
+      "points": 92
+    },
+    {
+      "manager": "Jon",
+      "points": 85
+    },
+    {
+      "manager": "Sully",
+      "points": 80
+    }
+  ],
+  "events": [
+    "WWE Raw - Monday",
+    "WWE SmackDown - Friday",
+    "AEW Dynamite - Wednesday"
+  ],
+  "availableWrestlers": [
+    "Roman Reigns",
+    "Bianca Belair",
+    "Seth Rollins",
+    "Becky Lynch",
+    "Gunther",
+    "Rhea Ripley"
+  ],
+  "teams": [
+    {
+      "manager": "Buddy",
+      "roster": [
+        "MJF",
+        "Charlotte Flair"
+      ]
+    },
+    {
+      "manager": "Jon",
+      "roster": [
+        "Cody Rhodes",
+        "Asuka"
+      ]
+    },
+    {
+      "manager": "Sully",
+      "roster": [
+        "LA Knight",
+        "Bayley"
+      ]
+    }
+  ]
+}
