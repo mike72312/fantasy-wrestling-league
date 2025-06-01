@@ -1,4 +1,2 @@
-function StandingsPage() {
-  return <div><h2>Standings</h2></div>;
-}
+function StandingsPage() { return <h2>League Standings</h2>; }
 export default StandingsPage;

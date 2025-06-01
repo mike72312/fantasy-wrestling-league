@@ -1,4 +1,2 @@
-function AvailableWrestlersPage() {
-  return <div><h2>Available Wrestlers</h2></div>;
-}
+function AvailableWrestlersPage({ teamName }) { return <h2>Available Wrestlers for {teamName}</h2>; }
 export default AvailableWrestlersPage;

@@ -7,8 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 let teams = [
-  { name: "Mike", wrestlers: ["Sami Zayn", "Gunther", "Becky Lynch"] },
-  { name: "Buddy", wrestlers: ["Finn Bálor", "AJ Styles", "Bayley"] }
+  { name: "mike", wrestlers: ["Sami Zayn", "Gunther", "Becky Lynch"] },
+  { name: "buddy", wrestlers: ["Finn Bálor", "AJ Styles", "Bayley"] }
 ];
 
 let wrestlers = ["Sami Zayn", "Gunther", "Becky Lynch", "Finn Bálor", "AJ Styles", "Bayley", "Iyo Sky", "Rhea Ripley", "Rey Mysterio"];
