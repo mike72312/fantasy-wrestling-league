@@ -1,1 +1,4 @@
-export default function StandingsPage() { return <h2>Standings</h2>; }
+function StandingsPage() {
+  return <h1>Standings</h1>;
+}
+export default StandingsPage;
