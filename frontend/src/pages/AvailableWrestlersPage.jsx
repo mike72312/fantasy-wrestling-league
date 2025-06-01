@@ -1,4 +1,4 @@
 function AvailableWrestlersPage() {
-  return <h1>Available Wrestlers</h1>;
+  return <div><h2>Available Wrestlers</h2></div>;
 }
 export default AvailableWrestlersPage;

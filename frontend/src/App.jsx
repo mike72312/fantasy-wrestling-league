@@ -1,23 +1,22 @@
-
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import MyTeamPage from './pages/MyTeamPage';
 import AvailableWrestlersPage from './pages/AvailableWrestlersPage';
 import StandingsPage from './pages/StandingsPage';
 
 function App() {
   return (
-    <Router>
-      <nav style={{ padding: '1rem', backgroundColor: '#f0f0f0' }}>
-        <Link to="/" style={{ margin: '0 1rem' }}>My Team</Link>
-        <Link to="/available" style={{ margin: '0 1rem' }}>Available Wrestlers</Link>
-        <Link to="/standings" style={{ margin: '0 1rem' }}>Standings</Link>
+    <div>
+      <nav style={{ backgroundColor: '#333', padding: '1rem' }}>
+        <Link to="/" style={{ color: '#fff', marginRight: '1rem' }}>My Team</Link>
+        <Link to="/available" style={{ color: '#fff', marginRight: '1rem' }}>Available Wrestlers</Link>
+        <Link to="/standings" style={{ color: '#fff' }}>Standings</Link>
       </nav>
       <Routes>
         <Route path="/" element={<MyTeamPage />} />
         <Route path="/available" element={<AvailableWrestlersPage />} />
         <Route path="/standings" element={<StandingsPage />} />
       </Routes>
-    </Router>
+    </div>
   );
 }
 

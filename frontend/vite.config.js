@@ -3,13 +3,8 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    port: 5173,
-    host: true,
-  },
   preview: {
     port: 4173,
-    host: true,
-    allowedHosts: ['wrestling-frontend.onrender.com'],
-  },
+    allowedHosts: ['wrestling-frontend.onrender.com']
+  }
 });

@@ -1,4 +1,4 @@
 function MyTeamPage() {
-  return <h1>My Team Page</h1>;
+  return <div><h2>My Team</h2></div>;
 }
 export default MyTeamPage;
