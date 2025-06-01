@@ -1,49 +1,56 @@
 const express = require("express");
 const cors = require("cors");
-const fs = require("fs");
+const bodyParser = require("body-parser");
+
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = 4000;
 
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 
-let data = {
-  standings: [
-    { manager: "Buddy", points: 85, team: ["Roman Reigns", "Becky Lynch"] },
-    { manager: "Jon", points: 78, team: ["MJF", "Bianca Belair"] },
-    { manager: "Sully", points: 66, team: ["Sami Zayn", "Kenny Omega"] }
-  ],
-  availableWrestlers: [
-    "LA Knight", "Cody Rhodes", "Asuka", "Charlotte Flair", "Kevin Owens", "Solo Sikoa"
-  ]
-};
+let league = [
+  { manager: "Buddy", points: 75, team: ["Roman Reigns", "Becky Lynch"] },
+  { manager: "Jon", points: 68, team: ["Sami Zayn", "Bianca Belair"] },
+  { manager: "Sully", points: 80, team: ["MJF", "Kenny Omega"] }
+];
 
-app.get("/api/standings", (req, res) => res.json(data.standings));
+let draftPool = [
+  "Gunther", "Rhea Ripley", "LA Knight", "Drew McIntyre",
+  "Bayley", "Asuka", "Seth Rollins", "Charlotte Flair"
+];
 
-app.get("/api/draft", (req, res) => res.json(data.availableWrestlers));
+app.get("/api/standings", (req, res) => {
+  res.json(league);
+});
+
+app.get("/api/draft", (req, res) => {
+  res.json(draftPool);
+});
 
 app.post("/api/draft", (req, res) => {
   const { manager, wrestler } = req.body;
-  const team = data.standings.find(entry => entry.manager === manager);
-  if (team && !team.team.includes(wrestler) && data.availableWrestlers.includes(wrestler) && team.team.length < 8) {
-    team.team.push(wrestler);
-    data.availableWrestlers = data.availableWrestlers.filter(w => w !== wrestler);
-    res.json({ success: true });
+  const user = league.find(u => u.manager === manager);
+  if (user && user.team.length < 8 && draftPool.includes(wrestler)) {
+    user.team.push(wrestler);
+    draftPool = draftPool.filter(w => w !== wrestler);
+    res.sendStatus(200);
   } else {
-    res.status(400).json({ success: false });
+    res.sendStatus(400);
   }
 });
 
 app.post("/api/drop", (req, res) => {
   const { manager, wrestler } = req.body;
-  const team = data.standings.find(entry => entry.manager === manager);
-  if (team && team.team.includes(wrestler)) {
-    team.team = team.team.filter(w => w !== wrestler);
-    data.availableWrestlers.push(wrestler);
-    res.json({ success: true });
+  const user = league.find(u => u.manager === manager);
+  if (user && user.team.includes(wrestler)) {
+    user.team = user.team.filter(w => w !== wrestler);
+    draftPool.push(wrestler);
+    res.sendStatus(200);
   } else {
-    res.status(400).json({ success: false });
+    res.sendStatus(400);
   }
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
