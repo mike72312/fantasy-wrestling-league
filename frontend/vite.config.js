@@ -1,10 +1,14 @@
-export default {
-  root: './',
-  build: {
-    outDir: 'dist'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    host: true
   },
   preview: {
-    port: 4173,
-    allowedHosts: ['.onrender.com']
+    port: 10000,
+    host: true
   }
-};
+});
