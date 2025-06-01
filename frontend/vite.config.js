@@ -1,7 +1,10 @@
 export default {
-  server: {
-    proxy: {
-      '/api': 'http://localhost:4000'
-    }
+  root: './',
+  build: {
+    outDir: 'dist'
+  },
+  preview: {
+    port: 4173,
+    allowedHosts: ['.onrender.com']
   }
 };
