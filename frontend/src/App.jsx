@@ -1,55 +1,42 @@
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import MyTeamPage from "./pages/MyTeamPage";
-import LoginPage from "./pages/LoginPage";
-import AvailablePage from "./pages/AvailablePage";
+import AvailableWrestlersPage from "./pages/AvailableWrestlersPage";
 import StandingsPage from "./pages/StandingsPage";
-
-function ProtectedRoute({ children }) {
-  const teamName = localStorage.getItem("teamName");
-  return teamName ? children : <Navigate to="/login" />;
-}
-
-function NavBar() {
-  const navigate = useNavigate();
-  const [teamName, setTeamName] = useState("");
-
-  useEffect(() => {
-    setTeamName(localStorage.getItem("teamName") || "");
-  }, []);
-
-  const logout = () => {
-    localStorage.removeItem("teamName");
-    navigate("/login");
-  };
-
-  if (!teamName) return null;
-
-  return (
-    <nav className="bg-gray-800 text-white p-4 flex justify-between">
-      <div className="flex space-x-4">
-        <button onClick={() => navigate("/my-team")}>My Team</button>
-        <button onClick={() => navigate("/available")}>Available Wrestlers</button>
-        <button onClick={() => navigate("/standings")}>Standings</button>
-      </div>
-      <button onClick={logout} className="hover:underline">
-        Log Out
-      </button>
-    </nav>
-  );
-}
+import LoginPage from "./pages/LoginPage";
 
 function App() {
+  const [teamName, setTeamName] = useState(localStorage.getItem("teamName"));
+
+  if (!teamName) {
+    return <LoginPage onLogin={(name) => {
+      localStorage.setItem("teamName", name);
+      setTeamName(name);
+    }} />;
+  }
+
   return (
     <Router>
-      <NavBar />
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/my-team" element={<ProtectedRoute><MyTeamPage /></ProtectedRoute>} />
-        <Route path="/available" element={<ProtectedRoute><AvailablePage /></ProtectedRoute>} />
-        <Route path="/standings" element={<ProtectedRoute><StandingsPage /></ProtectedRoute>} />
-        <Route path="*" element={<Navigate to="/login" />} />
-      </Routes>
+      <div className="min-h-screen bg-gray-100 text-gray-900">
+        <nav className="bg-white shadow p-4 flex justify-between">
+          <div className="font-bold">Fantasy Wrestling League</div>
+          <div className="space-x-4">
+            <Link to="/">My Team</Link>
+            <Link to="/available">Available Wrestlers</Link>
+            <Link to="/standings">Standings</Link>
+            <button onClick={() => {
+              localStorage.removeItem("teamName");
+              window.location.reload();
+            }}>Logout</button>
+          </div>
+        </nav>
+        <Routes>
+          <Route path="/" element={<MyTeamPage teamName={teamName} />} />
+          <Route path="/available" element={<AvailableWrestlersPage teamName={teamName} />} />
+          <Route path="/standings" element={<StandingsPage />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
