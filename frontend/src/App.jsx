@@ -1,21 +1,30 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import RosterPage from './pages/RosterPage';
-import AvailablePage from './pages/AvailablePage';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import MyTeamPage from './pages/MyTeamPage';
+import AvailableWrestlersPage from './pages/AvailableWrestlersPage';
 import StandingsPage from './pages/StandingsPage';
-import Navbar from './components/Navbar';
 
-export default function App() {
+function App() {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/my-team" element={<RosterPage />} />
-        <Route path="/available" element={<AvailablePage />} />
-        <Route path="/standings" element={<StandingsPage />} />
-      </Routes>
+      <div className="min-h-screen bg-gray-100">
+        <nav className="bg-blue-600 text-white p-4 shadow-md">
+          <ul className="flex gap-6 text-lg font-semibold">
+            <li><Link to="/" className="hover:underline">My Team</Link></li>
+            <li><Link to="/available" className="hover:underline">Available Wrestlers</Link></li>
+            <li><Link to="/standings" className="hover:underline">Standings</Link></li>
+          </ul>
+        </nav>
+
+        <main className="p-6">
+          <Routes>
+            <Route path="/" element={<MyTeamPage />} />
+            <Route path="/available" element={<AvailableWrestlersPage />} />
+            <Route path="/standings" element={<StandingsPage />} />
+          </Routes>
+        </main>
+      </div>
     </Router>
   );
 }
+
+export default App;
