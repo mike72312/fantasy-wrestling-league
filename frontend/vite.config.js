@@ -1,8 +1,14 @@
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
-export default {
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    proxy: {
+      "/api": "http://localhost:4000"
+    }
+  },
   preview: {
-    port: 5173,
-    strictPort: true,
-    allowedHosts: ['*']
+    allowedHosts: ["wrestling-frontend.onrender.com"]
   }
-};
+});
