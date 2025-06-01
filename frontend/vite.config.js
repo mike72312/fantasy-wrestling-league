@@ -9,7 +9,7 @@ export default defineConfig({
   },
   preview: {
     port: 10000,
-    host: true
+    host: true,
+    allowedHosts: ['wrestling-frontend.onrender.com']
   }
 });
-
