@@ -1,0 +1,1 @@
+export default function AvailablePage() { return <h2>Available Wrestlers</h2>; }

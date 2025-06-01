@@ -1,0 +1,1 @@
+export default function StandingsPage() { return <h2>Standings</h2>; }
