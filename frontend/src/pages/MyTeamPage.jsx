@@ -1,2 +1,1 @@
-function MyTeamPage({ teamName }) { return <h2>{teamName}'s Roster</h2>; }
-export default MyTeamPage;
+export default function MyTeamPage() { return <div>My Team Page</div>; }

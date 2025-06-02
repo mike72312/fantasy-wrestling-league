@@ -1,13 +1,17 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
+  const logout = () => {
+    localStorage.removeItem('teamName');
+    window.location.reload();
+  };
+
   return (
     <nav>
-      <Link to="/">Home</Link> | 
-      <Link to="/my-team">My Team</Link> | 
-      <Link to="/available">Available Wrestlers</Link> | 
+      <Link to="/my-team">My Team</Link>
+      <Link to="/available">Available</Link>
       <Link to="/standings">Standings</Link>
+      <button onClick={logout}>Logout</button>
     </nav>
   );
 }

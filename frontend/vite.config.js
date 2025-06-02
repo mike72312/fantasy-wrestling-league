@@ -5,8 +5,6 @@ export default defineConfig({
   plugins: [react()],
   preview: {
     port: 4173,
-    host: true,
-    allowedHosts: ['wrestling-frontend.onrender.com'],
-  },
+    allowedHosts: ['wrestling-frontend.onrender.com']
+  }
 });
-

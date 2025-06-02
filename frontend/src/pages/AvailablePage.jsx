@@ -1,1 +1,1 @@
-export default function AvailablePage() { return <h2>Available Wrestlers</h2>; }
+export default function AvailablePage() { return <div>Available Wrestlers</div>; }
