@@ -1,17 +1,28 @@
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function Navbar() {
-  const logout = () => {
+function NavBar() {
+  const navigate = useNavigate();
+  const handleLogout = () => {
     localStorage.removeItem('teamName');
-    window.location.reload();
+    navigate('/login');
   };
 
   return (
-    <nav>
-      <Link to="/my-team">My Team</Link>
-      <Link to="/available">Available</Link>
-      <Link to="/standings">Standings</Link>
-      <button onClick={logout}>Logout</button>
+    <nav className="p-4 bg-gray-800 text-white flex justify-between items-center">
+      <div className="flex gap-4">
+        <Link to="/my-team" className="hover:underline">My Team</Link>
+        <Link to="/available" className="hover:underline">Available Wrestlers</Link>
+        <Link to="/standings" className="hover:underline">Standings</Link>
+      </div>
+      <button
+        onClick={handleLogout}
+        className="bg-red-600 hover:bg-red-700 px-3 py-1 rounded"
+      >
+        Logout
+      </button>
     </nav>
   );
 }
+
+export default NavBar;
