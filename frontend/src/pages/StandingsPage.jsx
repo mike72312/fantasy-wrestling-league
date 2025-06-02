@@ -1,1 +1,1 @@
-export default function StandingsPage() { return <div>Standings Page</div>; }
+const StandingsPage = () => <div>Standings Page</div>; export default StandingsPage;

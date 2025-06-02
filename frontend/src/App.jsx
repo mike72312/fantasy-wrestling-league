@@ -1,26 +1,26 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import MyTeamPage from './pages/MyTeamPage';
-import AvailableWrestlersPage from './pages/AvailableWrestlersPage';
-import StandingsPage from './pages/StandingsPage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
+import MyTeamPage from './pages/MyTeamPage';
+import AvailablePage from './pages/AvailablePage';
+import StandingsPage from './pages/StandingsPage';
 import NavBar from './components/NavBar';
 
-function App() {
-  const teamName = localStorage.getItem('teamName');
+const App = () => {
+  const [teamName, setTeamName] = React.useState(localStorage.getItem('teamName'));
+
+  if (!teamName) return <LoginPage setTeamName={setTeamName} />;
 
   return (
-    <div>
-      <NavBar />
+    <Router>
+      <NavBar setTeamName={setTeamName} />
       <Routes>
-        <Route path="/" element={teamName ? <Navigate to="/my-team" /> : <LoginPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/my-team" element={<MyTeamPage />} />
-        <Route path="/available" element={<AvailableWrestlersPage />} />
-        <Route path="/standings" element={<StandingsPage />} />
+        <Route path='/' element={<MyTeamPage teamName={teamName} />} />
+        <Route path='/available' element={<AvailablePage teamName={teamName} />} />
+        <Route path='/standings' element={<StandingsPage />} />
       </Routes>
-    </div>
+    </Router>
   );
-}
+};
 
 export default App;

@@ -1,1 +1,1 @@
-export default function MyTeamPage() { return <div>My Team Page</div>; }
+const MyTeamPage = () => <div>My Team Page</div>; export default MyTeamPage;

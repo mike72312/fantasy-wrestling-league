@@ -1,1 +1,1 @@
-export default function AvailablePage() { return <div>Available Wrestlers</div>; }
+const AvailablePage = () => <div>Available Wrestlers</div>; export default AvailablePage;
