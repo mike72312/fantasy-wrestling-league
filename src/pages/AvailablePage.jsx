@@ -1,0 +1,1 @@
+const AvailablePage = () => <div>Available Wrestlers</div>; export default AvailablePage;

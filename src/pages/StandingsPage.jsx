@@ -1,0 +1,1 @@
+const StandingsPage = () => <div>Standings Page</div>; export default StandingsPage;
