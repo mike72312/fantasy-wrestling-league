@@ -1,1 +1,0 @@
-Fantasy Wrestling League v2.2.6 - Backend and data initialized.
